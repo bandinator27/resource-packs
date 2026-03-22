@@ -1,0 +1,16 @@
+{
+  "iris.shaders.reloaded": "§eShaders Reloaded!",
+  "iris.shaders.disabled": "§cShaders disabled!",
+  "iris.shaders.toggled": "Toggled shaders to %s!",
+  "key.category.iris.keybinds": "§e§lIris",
+  "iris.unsupported.pack": "§4Shaderpack incompatible!",
+  "options.iris.apply": "§aApply",
+  "options.iris.refresh": "§eRefresh",
+  "options.iris.refreshShaderPacks": "§eRefresh Shader Packs",
+  "options.iris.shaderPackSelection.title": "§lShader Packs",
+  "options.iris.back": "§cBack",
+  "options.iris.reset": "§eReset",
+  "options.iris.reset.tooltip": "§4Reset ALL options and apply?",
+  "label.iris.true": "§aOn",
+  "label.iris.false": "§cOff"
+}

@@ -1,0 +1,9 @@
+{
+  "sodium.option_impact.low": "§aLow",
+  "sodium.option_impact.medium": "§eMedium",
+  "sodium.option_impact.high": "§cHigh",
+  "sodium.option_impact.extreme": "§4Extreme",
+  "sodium.option_impact.varies": "§5Varies",
+  "sodium.options.buttons.undo": "§cUndo",
+  "sodium.options.buttons.apply": "§aApply"
+}
