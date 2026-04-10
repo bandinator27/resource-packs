@@ -19,7 +19,7 @@ Pack descriptions now all use the `\u00A7` color notation instead of `§`. See t
 ## brighter-dark-mode-text
 
 Replaces `.fsh` fragment shaders with `.vsh` vertex shaders to fix the text visibility in the
-[Default Dark Mode](https://modrinth.com/resourcepack/default-dark-mode) resource pack. Uses the [VanillaTweaks](https://vanillatweaks.net/picker/resource-packs) implementation. The color I chose is `0xe0e0e0` and can be modified in `assets\minecraft\shaders\include\brighter_text\main.vsh`.
+[Default Dark Mode](https://modrinth.com/resourcepack/default-dark-mode) resource pack. Uses the [VanillaTweaks](https://vanillatweaks.net/picker/resource-packs) implementation. The color I chose is `0xe0e0e0` which can be modified in `assets\minecraft\shaders\include\brighter_text\main.vsh`.
 
 ## visible-hopper-state
 
