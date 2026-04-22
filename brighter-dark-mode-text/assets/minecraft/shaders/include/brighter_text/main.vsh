@@ -1,23 +1,39 @@
-#define NEW_INVENTORY_TEXT_COLOUR 0xe0e0e0
-
-bool _ingui(mat4 projectionMat) {
+bool textColour_ingui(mat4 projectionMat) {
     return projectionMat[2][3] == 0.0;
 }
-int _toint(vec3 col) {
+int textColour_toint(vec3 col) {
   ivec3 icol = ivec3(col*255);
   return (icol.r << 16) + (icol.g << 8) + icol.b;
 }
-vec3 _tovec(int col) {
+vec3 textColour_tovec(int col) {
     return vec3(col >> 16, (col >> 8) % 256, col % 256) / 255.;
 }
 
-#define ORIGINAL_INVENTORY_TEXT_COLOUR 0x404040
+vec4 textColour_recolourText(vec4 colourAttribute, mat4 projectionMatrix) {
+    if(!textColour_ingui(projectionMatrix)) return colourAttribute;
 
-vec4 recolourText(vec4 colourAttribute, mat4 projectionMatrix) {
-    if(!_ingui(projectionMatrix)) return colourAttribute;
 
-    if(_toint(colourAttribute.rgb) == ORIGINAL_INVENTORY_TEXT_COLOUR) {
-        return vec4(_tovec(NEW_INVENTORY_TEXT_COLOUR), colourAttribute.a);
+// original gray inventory text
+if(textColour_toint(colourAttribute.rgb) == 0x404040) {
+    return vec4(textColour_tovec(NEW_INVENTORY_TEXT_COLOR), colourAttribute.a);
+}
+
+#ifdef TEXT_COLOR__XP_TEXT
+    switch(textColour_toint(colourAttribute.rgb)) {
+        // xp text
+        case 0x80ff20:
+        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT), colourAttribute.a);
+        // xp text shadow
+        case 0x203f08:
+        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) / 4.0, colourAttribute.a);
+        // xp text darker
+        case 0x407f10:
+        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) * 0.7, colourAttribute.a);
+        // xp text darker shadow
+        case 0x101f04:
+        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) * 0.7 / 4.0, colourAttribute.a);
     }
+#endif
+
     return colourAttribute;
 }
