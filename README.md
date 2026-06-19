@@ -4,6 +4,7 @@ A collection of highly customized resource packs using the latest pack formats.
 
 See the [wiki](https://minecraft.wiki/w/Pack_format#List_of_pack_formats) for more details on pack format numbering. Currently the following format numbers are used.
 
+- `88` for 26.2
 - `84` for 26.1.x
 - `69` - `75` for 1.21.9 - 1.21.11
 
