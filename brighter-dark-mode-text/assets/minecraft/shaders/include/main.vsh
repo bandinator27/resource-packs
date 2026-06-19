@@ -1,5 +1,9 @@
 bool textColour_ingui(mat4 projectionMat) {
+    #if !defined(IS_GUI)
     return projectionMat[2][3] == 0.0;
+    #else
+    return true;
+    #endif
 }
 int textColour_toint(vec3 col) {
   ivec3 icol = ivec3(col*255);
@@ -12,26 +16,25 @@ vec3 textColour_tovec(int col) {
 vec4 textColour_recolourText(vec4 colourAttribute, mat4 projectionMatrix) {
     if(!textColour_ingui(projectionMatrix)) return colourAttribute;
 
-
 // original gray inventory text
 if(textColour_toint(colourAttribute.rgb) == 0x404040) {
-    return vec4(textColour_tovec(NEW_INVENTORY_TEXT_COLOR), colourAttribute.a);
+    return vec4(textColour_tovec(NEW_GUI_TEXT_COLOR), colourAttribute.a);
 }
 
-#ifdef TEXT_COLOR__XP_TEXT
+#ifdef TEXT_COLOUR__XP_TEXT
     switch(textColour_toint(colourAttribute.rgb)) {
         // xp text
         case 0x80ff20:
-        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT), colourAttribute.a);
+        return vec4(textColour_tovec(TEXT_COLOUR__XP_TEXT), colourAttribute.a);
         // xp text shadow
         case 0x203f08:
-        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) / 4.0, colourAttribute.a);
+        return vec4(textColour_tovec(TEXT_COLOUR__XP_TEXT) / 4.0, colourAttribute.a);
         // xp text darker
         case 0x407f10:
-        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) * 0.7, colourAttribute.a);
+        return vec4(textColour_tovec(TEXT_COLOUR__XP_TEXT) * 0.7, colourAttribute.a);
         // xp text darker shadow
         case 0x101f04:
-        return vec4(textColour_tovec(TEXT_COLOR__XP_TEXT) * 0.7 / 4.0, colourAttribute.a);
+        return vec4(textColour_tovec(TEXT_COLOUR__XP_TEXT) * 0.7 / 4.0, colourAttribute.a);
     }
 #endif
 

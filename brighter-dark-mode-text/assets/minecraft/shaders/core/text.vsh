@@ -1,30 +1,42 @@
 #version 330
 
+#if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
 #moj_import <minecraft:fog.glsl>
+#moj_import <minecraft:sample_lightmap.glsl>
+#endif
+
 #moj_import <minecraft:dynamictransforms.glsl>
 #moj_import <minecraft:projection.glsl>
-#moj_import <minecraft:sample_lightmap.glsl>
 
-#define NEW_INVENTORY_TEXT_COLOR 0xe0e0e0
-#moj_import <minecraft:brighter_text/main.vsh>
+// -- New GUI Text Color
+#define NEW_GUI_TEXT_COLOR 0xe0e0e0
+#moj_import <main.vsh>
 
 in vec3 Position;
 in vec4 Color;
 in vec2 UV0;
+#if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
 in ivec2 UV2;
+#endif
 
+#if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
 uniform sampler2D Sampler2;
-
 out float sphericalVertexDistance;
 out float cylindricalVertexDistance;
+#endif
+
 out vec4 vertexColor;
 out vec2 texCoord0;
 
 void main() {
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
+#if !defined(IS_GUI) && !defined(IS_SEE_THROUGH)
     sphericalVertexDistance = fog_spherical_distance(Position);
     cylindricalVertexDistance = fog_cylindrical_distance(Position);
     vertexColor = textColour_recolourText(Color, ProjMat) * sample_lightmap(Sampler2, UV2);
+#else
+    vertexColor = textColour_recolourText(Color, ProjMat);
+#endif
     texCoord0 = UV0;
 }
