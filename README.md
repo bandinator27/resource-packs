@@ -13,9 +13,9 @@ As of version 25w31a (first 1.21.9 snapshot; July 29, 2025), the recommended `pa
 ```mcmeta
 {
   "pack": {
-    "description": "Pack description"
     "min_format": 69,
     "max_format": 88,
+    "description": "Pack description"
   }
 }
 ```
