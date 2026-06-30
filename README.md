@@ -15,17 +15,27 @@ As of version 25w31a (first 1.21.9 snapshot; July 29, 2025), the recommended `pa
   "pack": {
     "description": "Pack description"
     "min_format": 69,
-    "max_format": 84,
+    "max_format": 88,
   }
 }
 ```
 
 Pack descriptions now all use the `\u00A7` color notation instead of `§`. See the [wiki](https://minecraft.wiki/w/Formatting_codes) for more information about formatting codes.
 
-## brighter-dark-mode-text
+## ~~brighter-dark-mode-text~~
+
+*Deprecated:* No need for this pack anymore, replaced by **better-dark-mode**.
 
 Replaces `.fsh` fragment shaders with `.vsh` vertex shaders to fix the text visibility in the
 [Default Dark Mode](https://modrinth.com/resourcepack/default-dark-mode) resource pack. Uses the [VanillaTweaks](https://vanillatweaks.net/picker/resource-packs) implementation. The color I chose is `0xe0e0e0` and can be modified in `assets\minecraft\shaders\core\rendertype_text.vsh`.
+
+## better-dark-mode
+
+My customized version of the [Default Dark Mode](https://modrinth.com/resourcepack/default-dark-mode) resource pack.
+
+- Changed the text color to `0xe0e0e0` for better visibility. This can be modified in `assets\minecraft\shaders\core\rendertype_text.fsh`.
+- Removed `rendertype_text_intensity.vsh`.
+- Removed every mod I don't use.
 
 ## visible-hopper-state
 
